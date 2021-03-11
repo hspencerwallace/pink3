@@ -23,7 +23,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   leaves = loadImage('GreenLeaves2.jpg');
-  ocean = loadImage('mars.jpg');
+  ocean = loadImage('Iraq.jpg');
   frameRate(fps);
   // capturer = new CCapture({ format: 'png', framerate: fps });
 
@@ -73,7 +73,7 @@ function draw() {
 
   // camera rotation 
 
-  camera(0, 20 + sin(frameCount * (0.05)) * 10, 200 + sin(frameCount * 0.01) * 3000, 0, 0, 0, 0, 1, 0);
+  camera(0, 20 + sin(frameCount * (0.05)) * 10, 200 + sin(frameCount * 0.001) * 3000, 0, 0, 0, 0, 1, 0);
 
   // -z pink sky
   push();
@@ -96,15 +96,25 @@ function draw() {
   rotateX(angle);
 
   // "white" rectangle
+  //color formula: 
+  //first side rectangle that is contrasting to the background
+  //second side is contrasting color to the first side AND the background
+  //centerpiece object also has two sides
+  //first centerpiece side is lighter, second side is darker
+  //one color, maybe a highlight, that is consistant with both sides
+  //similar color needs to contrast with both rectangle colors
+  //each side of each centerpiece object has a second color, and those colors
+  //have to contrast with rectangle color 
+
     push();
 
-    //first side pink
-    directionalLight(255, 156, 192, -0.5, -0.5, -1);
-    //second side teal
-    directionalLight(231, 255, 150, 0.5, 0.5, 5);
+    //first side "purple"
+    directionalLight(176, 145, 230, -0.5, -0.5, -1);
+    //second side "tomato"
+    directionalLight(247, 113, 72, 0.5, 0.5, 5);
 
-    pointLight(255, 156, 192, -0.5, -0.5, -1);
-    pointLight(231, 255, 150, 0.5, 0.5, 5);
+    pointLight(176, 145, 230, -0.5, -0.5, -1);
+    pointLight(247, 113, 72, 0.5, 0.5, 5);
   
     translate(0, -100, -100);
     specularMaterial(255);
@@ -132,14 +142,14 @@ function draw() {
   angle += 0.0025;
 
   //lights on centerpiece
-    //yellow/green
-    directionalLight(229, 255, 41, -1, 0, -1);
+    //green on purple
+    directionalLight(0, 255, 85, -1, 0, -1);
    
-   //purple
-    directionalLight(183, 0, 255, 1, 0, 0);
-    //red
-    
-    directionalLight(252, 48, 48, 0, 0, 1);
+   //fuschia
+    directionalLight(237, 52, 151, 1, 0, 0);
+
+    //blue on tomato
+    directionalLight(77, 52, 237, 0, 0, 1);
 
 
   //
