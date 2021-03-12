@@ -158,8 +158,9 @@ function draw() {
   for (let i = 0; i < shells.length; i++) {
     shells[i].move();
     shells[i].display();
-  pop();
   }
+  pop();
+  
 // handle saving the frame
   // console.log('capturing frame');
   // capturer.capture(canvas);
