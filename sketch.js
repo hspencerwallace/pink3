@@ -194,7 +194,7 @@ function draw() {
 
   //lights on centerpiece
     //green on purple
-    directionalLight(0, 255, 85, -1, 0, -1);
+    directionalLight(250, 234, 85, -1, 0, -1);
    
    //fuschia
     directionalLight(237, 52, 151, 1, 0, 0);
@@ -236,7 +236,7 @@ class Shells {
 
   display() {
   scale(1.042); 
-  fill(250, 175, 230);
+  fill(255);
   model(shell);
   }
 }
