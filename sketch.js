@@ -87,7 +87,7 @@ function draw() {
 
   // camera rotation 
 
-  camera(0, 20 + sin(frameCount * (0.05)) * 10, 200 + sin(frameCount * 0.01) * 3000, 0, 0, 0, 0, 1, 0);
+  camera(0, 20 + sin(frameCount * (0.05)) * 10, 200 + sin(frameCount * 0.0015) * 3000, 0, 0, 0, 0, 1, 0);
 
 //-z pink sky, second one you see
   push();
@@ -211,7 +211,7 @@ function draw() {
     pop();
   pop();
 
-  angle += 0.0025;
+  angle += 0.00075;
 
   //lights on centerpiece
     //green on purple
@@ -250,8 +250,8 @@ class Shells {
   }
 
   move() {
-    rotateX(frameCount * 0.0055);
-    rotateY(frameCount * 0.0055);
+    rotateX(frameCount * 0.0035);
+    rotateY(frameCount * 0.0035);
 
   }
 
@@ -261,5 +261,6 @@ class Shells {
   model(shell);
   }
 }
+// pink3_tar_30fps_39sec_sin0015_angle_00075_rotate_0035 # 
 
 // ffmpeg -r 30 -f image2 -s 1920x1080 -i "%07d.png" -vcodec libx264 -crf 17 -pix_fmt yuv420p output.mp4
