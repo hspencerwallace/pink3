@@ -14,6 +14,8 @@ let sculpture8;
 let sculpture9;
 let sculpture10;
 let lineup;
+let pinknoise;
+let hah;
 
 // the frame rate (frames per second)
 var fps = 30;
@@ -33,6 +35,8 @@ function setup() {
   sculpture9 = loadImage('9.png');
   sculpture10 = loadImage('10.png');
   lineup = loadImage('lineup_pink3_pink_noise.png');
+  pinknoise = loadImage('pink_noise_vi.png')
+  hah = loadImage('hah.png')
   ocean = loadImage('Iraq.jpg');
   frameRate(fps);
   // capturer = new CCapture({ format: 'png', framerate: fps });
@@ -100,6 +104,13 @@ function draw() {
       pop();
 
       push();
+      rotateY(PI);
+      translate(0, 0, 0);
+      image(hah, 25, 500);
+      hah.resize(0, halfHeight-175);
+      pop();
+
+      push();
       translate(halfWidth/2, 0, 0);
       image(sculpture7, 0, 0);
       sculpture7.resize(0, halfHeight * 1.5);
@@ -124,6 +135,12 @@ function draw() {
       translate(50, 0, 0);
       image(lineup, 0, 0);
       lineup.resize(0, halfHeight-100);
+      pop();
+
+      push();
+      translate(0, 0, 0);
+      image(hah, 25, 500);
+      hah.resize(0, halfHeight-175);
       pop();
 
       push();
@@ -188,6 +205,10 @@ function draw() {
   rect(0, halfHeight-150, windowWidth, 300);
   rect(halfWidth-50, 0, 100, windowHeight);
   rect(-halfWidth +50, 0, 100, windowHeight);
+    translate(100, 0, 100);
+    image(pinknoise, -1000, 325);
+    pinknoise.resize(0, halfHeight-300);
+    pop();
   pop();
 
   angle += 0.0025;
