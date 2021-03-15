@@ -196,9 +196,16 @@ function draw() {
   rect(0, halfHeight-150, windowWidth, 300);
   rect(halfWidth-50, 0, 100, windowHeight);
   rect(-halfWidth +50, 0, 100, windowHeight);
-    translate(100, 0, 100);
-    image(pinknoise, -1000, 325);
-    pinknoise.resize(0, halfHeight-300);
+    push();
+      translate(-1800, -100, 0);
+      image(pinknoise, 0, 0);
+      pinknoise.resize(0, halfHeight);
+    pop();
+    push();
+      rotateY(PI);
+      translate(-1800, -100, 0);
+      image(pinknoise, 0, 0);
+      pinknoise.resize(0, halfHeight);
     pop();
   pop();
 
