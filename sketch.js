@@ -4,7 +4,7 @@ let windowWidth = 1920;
 let windowHeight = 1080;
 let halfHeight = windowHeight/2;
 let halfWidth = windowWidth/2;
-// let leaves;
+
 let ocean;
 let shells = [];
 let shell;
@@ -24,7 +24,7 @@ var capturer;
 var startMillis; 
 
 function preload() {
-  // female_leg = loadModel('femaleleg/femaleleg.obj');
+
   shell = loadModel('Locust/Locust.obj', true);
 }
 
@@ -39,7 +39,7 @@ function setup() {
   hah = loadImage('hah.png')
   ocean = loadImage('Iraq.jpg');
   frameRate(fps);
-  // capturer = new CCapture({ format: 'png', framerate: fps });
+  capturer = new CCapture({ format: 'png', framerate: fps, autoSaveTime: 30 });
 
   // Create objects
   for (let i = 0; i < 40; i++) {
@@ -49,22 +49,21 @@ function setup() {
 }
 
 function draw() {
+//
+// start the recording on the first frame
+// this avoids the code freeze which occurs if capturer.start is called
+// in the setup, since v0.9 of p5.js
+   if (frameCount === 1) {
 
-  //
+    capturer.start();
+  }
 
-  //  if (frameCount === 1) {
-  //   // start the recording on the first frame
-  //   // this avoids the code freeze which occurs if capturer.start is called
-  //   // in the setup, since v0.9 of p5.js
-  //   capturer.start();
-  // }
-
-  // if (startMillis == null) {
-  //   startMillis = millis();
-  // }
+  if (startMillis == null) {
+    startMillis = millis();
+  }
 
   // duration in milliseconds
-  var duration = 10000;
+  var duration = 360000;
 
   // compute how far we are through the animation as a value 
   // between 0 and 1.
@@ -72,13 +71,13 @@ function draw() {
   var t = map(elapsed, 0, duration, 0, 1);
 
   // if we have passed t=1 then end the animation.
-  // if (t > 1) {
-  //   noLoop();
-  //   console.log('finished recording.');
-  //   capturer.stop();
-  //   capturer.save();
-  //   return;
-  // }
+  if (t > 1) {
+    noLoop();
+    console.log('finished recording.');
+    capturer.stop();
+    capturer.save();
+    return;
+  }
   //
 
   noStroke();
@@ -184,18 +183,10 @@ function draw() {
     pointLight(176, 145, 230, -0.5, -0.5, -1);
     pointLight(247, 113, 72, 0.5, 0.5, 5);
   
-    translate(0, -100, -100);
+    translate(0, 0, -100);
     specularMaterial(255);
     shininess(20);
     plane(windowWidth-10, windowHeight-80);
-
-    // rect(0, -100, windowWidth-10, windowHeight-80);
-      //leaves
-      // push();
-      // translate(0, 0, -1);
-      // imageMode(CENTER);
-      // // image(leaves, 0, -100, windowWidth-10, windowHeight-80);
-      // pop();
 
     pop();
  
@@ -234,8 +225,8 @@ function draw() {
   pop();
   
 // handle saving the frame
-  // console.log('capturing frame');
-  // capturer.capture(canvas);
+  console.log('capturing frame');
+  capturer.capture(canvas);
 
 }
 
